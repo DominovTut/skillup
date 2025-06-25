@@ -1,2 +1,2 @@
-# skillup
+# Skill-Up
 Skill Development Manager
