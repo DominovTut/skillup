@@ -1,0 +1,7 @@
+.idea
+venv
+*.sqlite
+.env
+flyway.conf
+alembic.ini
+*.pyc
