@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.skills import router as skill_router
+from app.api.quest import router as quest_router
 
 
 app = FastAPI()
@@ -17,6 +18,7 @@ app.add_middleware(
 )
 
 app.include_router(skill_router)
+app.include_router(quest_router)
 
 
 if __name__ == '__main__':

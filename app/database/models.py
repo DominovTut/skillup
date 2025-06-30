@@ -25,6 +25,7 @@ class Skill(BaseEntity):
 
 
 class Quest(BaseEntity):
+    __tablename__ = "Quest"
     title = Column(String(255), nullable=False, unique=True)
     description = Column(String(255))
     quest_type = Column(Enum(QuestTypes))
@@ -32,4 +33,5 @@ class Quest(BaseEntity):
     difficulty = Column(String(255)) # TODO make it Enum
     xp_reward = Column(Integer)
     skill = relationship("Skill", back_populates="quests", uselist=False)
+    skill_id = Column(Integer, ForeignKey('Skill.id'))
     

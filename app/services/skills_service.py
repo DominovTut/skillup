@@ -13,10 +13,16 @@ def create_skill(data: skills_schema.CreateSkillModel):
         session.commit()
 
 
-def fetch_skill(skill_id: int):
+def fetch_skill_by_id(skill_id: int):
     with Session(db_engine) as session:
         skill = session.query(Skill).where(Skill.id == skill_id).one()
-        return skills_schema.GetSkillModel.model_validate(skill)
+        return skill
+
+
+def fetch_skill_by_title(title: str):
+    with Session(db_engine) as session:
+        skill = session.query(Skill).where(Skill.title == title).one()
+        return skill
 
 
 def fetch_all_skills():

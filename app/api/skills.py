@@ -11,13 +11,13 @@ router = APIRouter(tags=['skills'])
 
 
 @router.get('/skill', status_code=status.HTTP_200_OK, response_model=skills_schema.SkillListModel)
-def get_all_memes():
+def get_skills():
     return skills_service.fetch_all_skills()
 
 
 @router.get('/skill/{skill_id}', status_code=status.HTTP_200_OK, response_model=skills_schema.GetSkillModel)
-def get_all_memes(skill_id: int):
-    return skills_service.fetch_skill(skill_id)
+def get_skill(skill_id: int):
+    return skills_schema.GetSkillModel.model_validate(skills_service.fetch_skill_by_id(skill_id))
 
 
 @router.post('/skill', status_code=status.HTTP_201_CREATED)
