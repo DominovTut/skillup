@@ -27,6 +27,6 @@ class QuestInListModel(BaseQuestModel):
 
 class GetQuestModel(BaseQuestModel):
     description: Optional[str]
-    skill: str
+    skill_id: int
     status: QuestStatus
     xp_reward: int

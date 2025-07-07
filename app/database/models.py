@@ -3,7 +3,7 @@ from sqlalchemy import Column, ForeignKey, Integer, String, DateTime, Float, Boo
 from sqlalchemy.orm import declarative_base, relationship
 from sqlalchemy.sql import func
 
-from app.constants.constants import QuestTypes
+from app.constants.constants import QuestTypes, QuestDifficulty, QuestStatus
 
 Base = declarative_base()
 
@@ -29,8 +29,8 @@ class Quest(BaseEntity):
     title = Column(String(255), nullable=False, unique=True)
     description = Column(String(255))
     quest_type = Column(Enum(QuestTypes))
-    status = Column(String(255)) # TODO make it Enum
-    difficulty = Column(String(255)) # TODO make it Enum
+    status = Column(Enum(QuestStatus), default=QuestStatus.in_progress)
+    difficulty = Column(Enum(QuestDifficulty))
     xp_reward = Column(Integer)
     skill = relationship("Skill", back_populates="quests", uselist=False)
     skill_id = Column(Integer, ForeignKey('Skill.id'))
